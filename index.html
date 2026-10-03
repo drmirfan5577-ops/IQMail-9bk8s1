@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>IQMAIL — Enterprise Email Platform | iqmail.online</title>
+    <meta name="description" content="IQMAIL — Professional, secure, and feature-rich email platform with Cloudflare routing and Resend API. Create your custom @iqmail.online email address today." />
+    <meta name="keywords" content="IQMAIL, email, iqmail.online, custom email, Cloudflare email, Resend, Pakistan email, Islamic email, enterprise email, free email, PWA" />
+    <meta name="author" content="IQMAIL — iqmail.online" />
+    <meta name="theme-color" content="#0066ff" />
+    <meta name="color-scheme" content="light" />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="IQMAIL" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://iqmail.online" />
+    <meta property="og:title" content="IQMAIL — Enterprise Email Platform" />
+    <meta property="og:description" content="Professional email hosting at iqmail.online. Cloudflare routing + Resend delivery. Secure, fast, and reliable." />
+    <meta property="og:site_name" content="IQMAIL" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="IQMAIL — Enterprise Email Platform" />
+    <meta name="twitter:description" content="Professional email hosting at iqmail.online." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230066ff'/><path d='M15 35 L50 58 L85 35 M15 35 L15 70 L85 70 L85 35' stroke='white' stroke-width='6' fill='none' stroke-linejoin='round'/></svg>" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IQMAIL",
+      "url": "https://iqmail.online",
+      "description": "Enterprise email platform with Cloudflare routing and Resend delivery",
+      "applicationCategory": "CommunicationApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Register Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('IQMAIL SW registered:', reg.scope))
+            .catch(err => console.warn('SW registration failed:', err));
+        });
+      }
+    </script>
+  </body>
+</html>

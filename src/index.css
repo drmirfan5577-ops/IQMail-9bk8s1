@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 210 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 80% 90%;
+    --secondary-foreground: 210 100% 30%;
+
+    --muted: 210 30% 95%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 195 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 92%;
+    --ring: 210 100% 45%;
+
+    --radius: 0.75rem;
+
+    /* IQMAIL Custom tokens */
+    --glass-bg: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(200, 230, 255, 0.6);
+    --glass-shadow: 0 8px 32px rgba(0, 120, 255, 0.12);
+    --glow-blue: 0 0 20px rgba(0, 150, 255, 0.4);
+    --glow-cyan: 0 0 15px rgba(0, 220, 255, 0.35);
+    --neon-red: #ff2244;
+    --digital-green: #00ff88;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 215 25% 20%;
+    --sidebar-primary: 210 100% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 80% 92%;
+    --sidebar-accent-foreground: 210 100% 30%;
+    --sidebar-border: 210 30% 88%;
+    --sidebar-ring: 210 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  #root {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+}
+
+/* Glass Morphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-dark {
+  background: rgba(10, 30, 60, 0.65);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid rgba(0, 150, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 80, 200, 0.3);
+}
+
+/* Digital Clock Font */
+.font-digital {
+  font-family: 'Orbitron', monospace;
+}
+
+/* Urdu Font */
+.font-urdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  direction: rtl;
+}
+
+/* Glowing Text */
+.text-glow-red {
+  color: var(--neon-red);
+  text-shadow: 0 0 10px #ff2244, 0 0 20px #ff2244, 0 0 40px #ff0022;
+}
+
+.text-glow-cyan {
+  color: #00eeff;
+  text-shadow: 0 0 8px #00eeff, 0 0 16px #00ccff;
+}
+
+.text-glow-green {
+  color: var(--digital-green);
+  text-shadow: 0 0 8px #00ff88, 0 0 16px #00ff66;
+}
+
+.text-glow-white {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(100,180,255,0.6);
+}
+
+/* Running text strip */
+.ticker-strip {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-content {
+  display: inline-block;
+  animation: ticker 40s linear infinite;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Background animations */
+@keyframes float-particle {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+  33%  { transform: translateY(-30px) translateX(20px) scale(1.1); opacity: 0.8; }
+  66%  { transform: translateY(-15px) translateX(-15px) scale(0.9); opacity: 0.5; }
+  100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes blink-digit {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in-left { animation: slide-in-left 0.3s ease-out; }
+.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+.animate-fade-in-up { animation: fade-in-up 0.25s ease-out; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
+.animate-blink { animation: blink-digit 1s step-end infinite; }
+
+/* Star button */
+.star-btn {
+  background: radial-gradient(circle, rgba(255,220,80,0.9) 0%, rgba(255,160,20,0.7) 60%, transparent 100%);
+  box-shadow: 0 0 12px rgba(255,200,0,0.8), 0 0 24px rgba(255,180,0,0.4);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+}
+
+.star-btn:hover {
+  box-shadow: 0 0 20px rgba(255,220,0,1), 0 0 40px rgba(255,200,0,0.6);
+  transform: scale(1.15);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(200, 220, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 120, 255, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 120, 255, 0.65);
+}
+
+/* Email list item */
+.email-item {
+  transition: all 0.2s ease;
+}
+.email-item:hover {
+  background: rgba(0, 120, 255, 0.07);
+  transform: translateX(2px);
+}
+.email-item.unread {
+  border-left: 3px solid hsl(var(--primary));
+}
+
+/* Gradient text */
+.gradient-text-blue {
+  background: linear-gradient(135deg, #0066ff, #00ccff, #0044cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #ffd700, #ffaa00, #ff8800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(135deg, #0066ff, #00ccff, #0044cc, #00aaff) border-box;
+  border: 1.5px solid transparent;
+}
+
+/* Bismillah strip gradient */
+.bismillah-strip {
+  background: linear-gradient(90deg,
+    rgba(0, 40, 120, 0.9) 0%,
+    rgba(0, 80, 200, 0.85) 25%,
+    rgba(0, 120, 255, 0.9) 50%,
+    rgba(0, 80, 200, 0.85) 75%,
+    rgba(0, 40, 120, 0.9) 100%
+  );
+  animation: shimmer 4s linear infinite;
+  background-size: 200% auto;
+}
+
+/* Bottom ticker gradient */
+.bottom-ticker-strip {
+  background: linear-gradient(90deg,
+    rgba(0, 20, 60, 0.92) 0%,
+    rgba(0, 60, 160, 0.88) 30%,
+    rgba(0, 100, 220, 0.9) 60%,
+    rgba(0, 60, 160, 0.88) 80%,
+    rgba(0, 20, 60, 0.92) 100%
+  );
+}
+
+/* Notification dot */
+.notif-dot {
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--primary));
+  border-radius: 50%;
+  animation: pulse-glow 1.5s infinite;
+}
+
+/* Filter panel */
+.filter-slider::-webkit-slider-thumb {
+  background: hsl(var(--primary));
+  box-shadow: 0 0 6px rgba(0,120,255,0.5);
+}
